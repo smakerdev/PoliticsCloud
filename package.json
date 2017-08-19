@@ -1,0 +1,29 @@
+{
+  "name": "politicscloud",
+  "version": "1.0.0",
+  "description": "인하대학교 해커톤 프로젝트",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smakerdev/PoliticsCloud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smakerdev/PoliticsCloud/issues"
+  },
+  "homepage": "https://github.com/smakerdev/PoliticsCloud#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.15.4",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "mysql": "^2.14.1",
+    "path": "^0.12.7",
+    "request": "^2.81.0"
+  }
+}
