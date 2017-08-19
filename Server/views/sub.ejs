@@ -1,2 +1,89 @@
-<%= number %>
-<%= keyword %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>정책 클라우드</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="./dist/jqcloud.js"></script>
+    <link rel="stylesheet" href="./dist/jqcloud.min.css">
+
+
+</head>
+
+<body>
+
+
+    <br>
+
+    <div class="container">
+
+        <a style="font-size: 30px; text-decoration:none; color:black;" href="../../"><img style="margin-bottom: 20px;" width="200" height="80" src="../img/logo-sm.png"><%= keyword %></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <!-- <img src="./img/logosm.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+                &nbsp;정책 클라우드
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            </div>
+        </nav>
+
+        <br>
+
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">
+                <%= keyword %>
+            </h4>
+            <hr>
+            <p class="mb-0">정책 이슈 14개 / 기사 954개 / 댓글 8781개</p>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                    <% for (var i = 0; i < news.length; i++) { %>
+                        
+                            <% if (comment[i].label == 0) { %>
+                                <div class="alert alert-secondary" role="alert">
+                                    <%= comment[i].contents %>
+                                </div>
+                            <% } %>
+        
+                            <% if (comment[i].label == -1) { %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= comment[i].contents %>
+                                </div>
+                            <% } %>
+        
+                        <% } %>
+            </div>
+            <div class="col-md-6">
+                    <% for (var i = 0; i < news.length; i++) { %>
+        
+                            <% if (comment[i].label == -1) { %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= comment[i].contents %>
+                                </div>
+                            <% } %>
+        
+                        <% } %>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
