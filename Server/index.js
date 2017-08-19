@@ -12,6 +12,16 @@ var mysql = require('mysql');
 
 var path = require('path');
 var fs = require('fs');
+var session = require('express-session');
+
+app.use(session({
+    secret: 'qwerty1234',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 600000
+    }
+}));
 
 var port = 3000;
 
@@ -27,6 +37,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+app.use(express.static((path.join(__dirname, 'public'))));
 
 app.engine('ejs', ejs);
 app.set('view engine', 'ejs');
