@@ -1,7 +1,9 @@
-exports.config = {
-    host :'localhost',
-    user : 'root',
-    password : '1234',
-    port : '3306',
+let config = {
+    host :'unidev.namsu.xyz',
+    user : 'dbmaster',
+    password : 'dbmaster',
+    port : '9931',
     database : 'politics'
-}
+};
+
+module.exports = config;
