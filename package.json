@@ -4,7 +4,7 @@
   "description": "인하대학교 해커톤 프로젝트",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "body-parser": "^1.17.2",
     "ejs-locals": "^1.0.2",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "mysql": "^2.14.1",
