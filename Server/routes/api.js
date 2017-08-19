@@ -1,14 +1,6 @@
-var client_id = 'TEn6rLqKYMODIumOV_pZ';
-var client_secret = '976Up3Phrl';
-
-var auth_client_id = '8_lQw6Qglnj5oTUUGwIV';
-var auth_client_secret = 'TthCJY2jIs';
-var state = "success";
-var redirectURI = encodeURI("http://localhost:3000/api/auth/callback");
 var api_url = "";
 
-
-module.exports = (router, connection) => {
+module.exports = (router, connection, config) => {
     router.get('/', function (req, res) {
         res.send('Hello');
     });
@@ -19,8 +11,8 @@ module.exports = (router, connection) => {
             var options = {
                 url: api_url,
                 headers: {
-                    'X-Naver-Client-Id': client_id,
-                    'X-Naver-Client-Secret': client_secret
+                    'X-Naver-Client-Id': config.client_id,
+                    'X-Naver-Client-Secret': config.client_secret
                 }
             };
             request.get(options, function (error, response, body) {
@@ -54,7 +46,7 @@ module.exports = (router, connection) => {
         })
 
         .get('/auth', function (req, res) {
-            api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + auth_client_id + '&redirect_uri=' + redirectURI + '&state=' + state;
+            api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + config.auth_client_id + '&redirect_uri=' + config.redirectURI + '&state=' + config.state;
             res.render('login', {
                 url: api_url
             });
@@ -68,35 +60,43 @@ module.exports = (router, connection) => {
 
             code = req.query.code;
             state = req.query.state;
+            
             api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=' +
-                auth_client_id + '&client_secret=' + auth_client_secret + '&redirect_uri=' + redirectURI + '&code=' + code + '&state=' + state;
+                config.auth_client_id + '&client_secret=' + config.auth_client_secret + '&redirect_uri=' + config.redirectURI + '&code=' + config.code + '&state=' + config.state;
             var request = require('request');
             var options = {
                 url: api_url,
                 headers: {
-                    'X-Naver-Client-Id': auth_client_id,
-                    'X-Naver-Client-Secret': auth_client_secret
+                    'X-Naver-Client-Id': config.auth_client_id,
+                    'X-Naver-Client-Secret': config.auth_client_secret
                 }
             };
 
             request.get(options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    res.writeHead(200, {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    });
-                    var data = JSON.parse(body);
-                    var token = data.access_token;
-                    req.session.auth = token;
+                    // res.writeHead(200, {
+                    //     'Content-Type': 'application/json;charset=utf-8'
+                    // });
                     
+                    var data = JSON.parse(body);
+                    // var token = data.access_token;
+                    // req.session.auth = token;
+                
                     res.end(body);
+
                     // res.end(body);
                     // return res.send("<script>alert('로그인되었습니다.');location.href('../../../');</script>")
                 } else {
-                    res.status(response.statusCode).end();
+                    return res.status(response.statusCode).end();
                     console.log('error = ' + response.statusCode);
                 }
             });
-        });
+        })
 
+        .get('/logout', function (req, res) {
+            req.session.auth = null;
+            res.status(200);
+            return res.send("<script>alert('로그아웃되었습니다.');location.replace('../../');</script>");
+        });
     return router;
 }

@@ -45,7 +45,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname + '/views'));
 
 var index = require('./routes/')(router, connection);
-var api = require('./routes/api')(router, connection);
+var api = require('./routes/api')(router, connection, config);
 
 app.use('/', index);
 app.use('/api', api);
