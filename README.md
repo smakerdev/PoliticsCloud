@@ -14,7 +14,7 @@ http://esplay.xyz:21218/
 
 ## 웹 및 데이터베이스 서버
 - Node.js
-- Mysql
+- MySQL
 
 ## 네이버 API 및 Request
 - 네이버 로그인
