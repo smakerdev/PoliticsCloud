@@ -21,3 +21,16 @@
 ## 댓글 학습 분류
 - Python3 기반
 - keras 딥러닝 라이브러리
+
+
+## 사용한 라이브러리
+### 파이선 라이브러리
+- keras
+- scikit-learn
+- pymysql
+- pandas
+- simplejson
+- konlpy
+- beautifulsoup
+- requests
+
