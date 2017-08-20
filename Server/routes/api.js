@@ -46,14 +46,14 @@ module.exports = (router, connection, config) => {
         })
 
         .get('/auth', function (req, res) {
+
+            
             api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + config.auth_client_id + '&redirect_uri=' + config.redirectURI + '&state=' + config.state;
-            res.render('login', {
-                url: api_url
-            });
-            // res.writeHead(200, {
-            //     'Content-Type': 'text/html;charset=utf-8'
+            return res.redirect(api_url);
+            // res.render('login', {
+            //     url: api_url
             // });
-            // res.end("<a href='" + api_url + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
+            
         })
 
         .get('/auth/callback', function (req, res) {
@@ -74,18 +74,15 @@ module.exports = (router, connection, config) => {
 
             request.get(options, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    // res.writeHead(200, {
-                    //     'Content-Type': 'application/json;charset=utf-8'
-                    // });
+                    res.writeHead(200, {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    });
                     
                     var data = JSON.parse(body);
-                    // var token = data.access_token;
-                    // req.session.auth = token;
+                    var token = data.access_token;
+                    req.session.auth = token;
                 
                     res.end(body);
-
-                    // res.end(body);
-                    // return res.send("<script>alert('로그인되었습니다.');location.href('../../../');</script>")
                 } else {
                     return res.status(response.statusCode).end();
                     console.log('error = ' + response.statusCode);

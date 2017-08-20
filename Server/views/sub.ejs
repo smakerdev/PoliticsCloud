@@ -27,7 +27,7 @@
 
     <div class="container">
 
-        <a style="font-size: 30px; text-decoration:none; color:black;" href="../../"><img style="margin-bottom: 20px;" width="200" height="80" src="../img/logo-sm.png"><%= keyword %></a>
+        <a style="font-size: 30px; text-decoration:none; color:black;" href="../../"><img style="margin-bottom: 20px;" width="200" height="80" src="../img/logo-sm.png"></a>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">
                 <!-- <img src="./img/logosm.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
@@ -48,10 +48,11 @@
                 <%= keyword %>
             </h4>
             <hr>
-            <p class="mb-0">정책 이슈 14개 / 기사 954개 / 댓글 8781개</p>
+            <p class="mb-0">정책 이슈 8개 / 기사 954개 / 댓글 8781개</p>
 
         </div>
         <div class="row">
+
             <div class="col-md-6">
                     <% for (var i = 0; i < news.length; i++) { %>
                         
@@ -61,18 +62,12 @@
                                 </div>
                             <% } %>
         
-                            <% if (comment[i].label == -1) { %>
-                                <div class="alert alert-danger" role="alert">
-                                    <%= comment[i].contents %>
-                                </div>
-                            <% } %>
-        
                         <% } %>
             </div>
             <div class="col-md-6">
                     <% for (var i = 0; i < news.length; i++) { %>
         
-                            <% if (comment[i].label == -1) { %>
+                            <% if (comment[i].label == 1) { %>
                                 <div class="alert alert-danger" role="alert">
                                     <%= comment[i].contents %>
                                 </div>
