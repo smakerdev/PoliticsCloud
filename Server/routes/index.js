@@ -16,7 +16,29 @@ module.exports = (router, connection) => {
             });
         })
 
-        .get('/word/', function (req, res) {
+        .get('/news', function (req, res) {
+            connection.query('select * from keyword', function (error, results, fields) {
+                if (error) throw error;
+                res.render('news_main', {
+                    result: results,
+                });
+
+            });
+        })
+
+        .get('/news/:number', function (req, res) {
+            connection.query("select * from keyword where id = ?", req.params.number, function (error, keyword, fields) {
+                if (error) throw error;                
+                connection.query("select * from news where keyword_id = ?", req.params.number, function (error, results, fields) {
+                    if (error) throw error;
+
+                    res.render('news', {
+                        number: req.params.number,
+                        keyword: keyword[0].keyword,
+                        news: results
+                    });
+                });
+            });
 
         })
 
