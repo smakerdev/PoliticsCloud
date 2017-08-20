@@ -5,12 +5,14 @@ module.exports = (router, connection) => {
     router.get('/', function (req, res) {
             connection.query('select * from keyword', function (error, results, fields) {
                 if (error) throw error;
-
-                console.log(api_url);
                 res.render('index', {
                     result: results,
                     url: api_url
                 });
+
+
+                console.log(api_url);
+
             });
         })
 
@@ -25,15 +27,17 @@ module.exports = (router, connection) => {
                     if (error) throw error;
                     var data = JSON.parse(JSON.stringify(result));
 
-                    connection.query("select * from train_comment where keyword_id = ?", req.params.number, function (error, comment, fields) {
+                    connection.query("select * from comment where keyword_id = ?", req.params.number, function (error, comment, fields) {
                         if (error) throw error;
                         var comment_data = JSON.parse(JSON.stringify(comment));
+
                         res.render('sub', {
                             number: req.params.number,
                             keyword: results[0].keyword,
                             news: data,
                             comment: comment_data
                         });
+
                     });
                 });
             });
