@@ -1,4 +1,4 @@
-# PoliticsCloud
+# **PoliticsCloud**
 ## 인하대학교 해커톤 프로젝트
 ### collaborator(이름순)
 #### 김기표, 류재현, 배재헌, 성대경, 최웅규, 최지헌
