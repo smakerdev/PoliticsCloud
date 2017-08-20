@@ -23,42 +23,42 @@
             var words = [{
                     text: "<%= result[0].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[0].id %>"
+                    link: './news/' + "<%= result[0].id %>"
                 },
                 {
                     text: "<%= result[1].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[1].id %>"
+                    link: './news/' + "<%= result[1].id %>"
                 },
                 {
                     text: "<%= result[2].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[2].id %>"
+                    link: './news/' + "<%= result[2].id %>"
                 },
                 {
                     text: "<%= result[3].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[3].id %>"
+                    link: './news/' + "<%= result[3].id %>"
                 },
                 {
                     text: "<%= result[4].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[4].id %>"
+                    link: './news/' + "<%= result[4].id %>"
                 },
                 {
                     text: "<%= result[5].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[5].id %>"
+                    link: './news/' + "<%= result[5].id %>"
                 },
                 {
                     text: "<%= result[6].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[6].id %>"
+                    link: './news/' + "<%= result[6].id %>"
                 },
                 {
                     text: "<%= result[7].keyword %>",
                     weight: Math.random(15),
-                    link: './sub/' + "<%= result[7].id %>"
+                    link: './news/' + "<%= result[7].id %>"
                 }
             ];
 
@@ -127,9 +127,6 @@
                             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./news"> 관련 기사</a>
-                    </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
                     <button onclick="location.replace('./api/auth')" type="button" class="btn btn-outline-primary">로그인</button>
@@ -140,27 +137,11 @@
         <br>
 
         <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">정책에 대한 의견을 보자!</h4>
-            <hr>
-            <p class="mb-0">정책 이슈 8개 / 기사 954개 / 댓글 8781개</p>
+            <h4 class="alert-heading">관련 기사를 보자!</h4>
 
         </div>
         <div id="demo" style="height: 500px; width: 100%; font-size: 15px;"></div>
     </div>
-    <!-- <div class="logo">
-        <img src="./img/logobig.png">
-    </div>
-k
-    <div style="text-align: right; margin-right: 500px; margin-top: -20px;">
-        <button type="submit" style="background-color: white; padding-top: 4px;">
-      <img src="./img/join.png">.
-    </button>
-        <button type="submit" style="background-color: white; padding-top: 4px;">
-      <img src="./img/login.png">
-    </button>
-    </div>
-
-    <div id="demo" style="height: 500px; width: 100%; font-size: 15px;"></div> -->
 </body>
 
 </html>
