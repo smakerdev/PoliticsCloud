@@ -1,7 +1,7 @@
 let config = {
-    host :'unidev.namsu.xyz',
-    user : 'dbmaster',
-    password : 'dbmaster',
+    host :'localhost',
+    user : '',
+    password : '',
     port : '9931',
     database : 'politics',
     client_id: 'TEn6rLqKYMODIumOV_pZ',
